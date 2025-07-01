@@ -1,17 +1,15 @@
 <form class="custom-form">
-  <p class="form-group">
-    <label for="title">Title</label>
+  <app-control label="Title">
     <input type="text" id="title" name="title" class="form-input" />
-  </p>
-  <p class="form-group">
-    <label for="request">Request</label>
+  </app-control>
+  <app-control label="Request">
     <textarea
       id="request"
       name="request"
       rows="3"
       class="form-textarea"
     ></textarea>
-  </p>
+  </app-control>
   <p class="form-actions">
     <button type="submit" appButton>
       <span>Submit</span>
