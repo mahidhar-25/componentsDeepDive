@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, viewChild, ViewChild } from '@angular/core';
 import { ControlComponent } from '../../../shared/control/control.component';
 import { FormsModule } from '@angular/forms';
 
@@ -10,10 +10,20 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './new-ticket.component.css',
 })
 export class NewTicketComponent {
-  onSubmit(title: string, request: string): void {
+  // Using ViewChild to access the form element
+  // This allows us to reset the form after submission
+  @ViewChild('form') formComponent?: ElementRef<HTMLFormElement>;
+  // signal view child
+  //private formComponentDuplicate = viewChild.required<ElementRef<HTMLFormElement>>('form');
+  onSubmit(title: string, request: string, form: HTMLFormElement): void {
     // Handle form submission logic here
     console.log('Title:', title);
     console.log('Request:', request);
+
+    //form.reset(); // Reset the form after submission
     console.log('Form submitted');
+    if (this.formComponent) {
+      this.formComponent?.nativeElement.reset();
+    }
   }
 }

@@ -1,9 +1,17 @@
 <form
   class="custom-form"
-  (ngSubmit)="onSubmit(titleInput.value, requestInput.value)"
+  (ngSubmit)="onSubmit(titleInput.value, requestInput.value, form)"
+  #form
 >
   <app-control label="Title">
-    <input type="text" id="title" name="title" class="form-input" #titleInput />
+    <input
+      type="text"
+      id="title"
+      name="title"
+      class="form-input"
+      #titleInput
+      #input
+    />
   </app-control>
   <app-control label="Request">
     <textarea
@@ -12,6 +20,7 @@
       rows="3"
       class="form-textarea"
       #requestInput
+      #input
     ></textarea>
   </app-control>
   <p class="form-actions">
