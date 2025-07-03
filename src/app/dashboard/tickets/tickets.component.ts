@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed } from '@angular/core';
 import { NewTicketComponent } from './new-ticket/new-ticket.component';
 import { Ticket } from './tickets.model';
 import { TicketComponent } from './ticket/ticket.component';
@@ -20,5 +20,11 @@ export class TicketsComponent {
       request,
       status: 'open',
     });
+  }
+
+  onCloseTicket(ticketId: string): void {
+    this.tickets = this.tickets.map((ticket) =>
+      ticket.id === ticketId ? { ...ticket, status: 'closed' } : ticket
+    );
   }
 }

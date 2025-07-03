@@ -26,19 +26,20 @@ export class NewTicketComponent {
   }>();
   // signal view child
   //private formComponentDuplicate = viewChild.required<ElementRef<HTMLFormElement>>('form');
-  onSubmit(title: string, request: string, form: HTMLFormElement): void {
-    // Handle form submission logic here
-    console.log('Title:', title);
-    console.log('Request:', request);
 
-    //form.reset(); // Reset the form after submission
-    console.log('Form submitted');
-    if (this.formComponent) {
-      this.formComponent?.nativeElement.reset();
-    }
+  enteredTitle = '';
+  enteredRequest = '';
+  onSubmit(): void {
+    // Handle form submission logic here
+    console.log('Title:', this.enteredTitle);
+    console.log('Request:', this.enteredRequest);
+
     this.add.emit({
-      title,
-      request,
+      title: this.enteredTitle,
+      request: this.enteredRequest,
     });
+    //form.reset(); // Reset the form after submission
+    this.enteredTitle = '';
+    this.enteredRequest = '';
   }
 }
